@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  coulomb_notes:
+    restart: unless-stopped
+    volumes:
+      - notes:/src/data
+    build: https://github.com/bhscomputerscienceclub/coulomb-2021-project.git#main
+  watts_math:
+    restart: unless-stopped
+    volumes:
+      - leaderboard:/code/pts
+    build: https://github.com/bhscomputerscienceclub/watt-2021-project.git#main
+  gradecalc:
+    restart: unless-stopped
+    build: https://github.com/bhscomputerscienceclub/example-2021-project.git#main
+  anonymousdiary:
+    restart: unless-stopped
+    build: https://github.com/bhscomputerscienceclub/volt-2021-project.git#main
+    volumes:
+      - diary:/code/diaries
+    
+
+volumes:
+  notes:
+  leaderboard:
+  diary:
+
+networks:
+  default:
+    external:
+      name: nginxnet
