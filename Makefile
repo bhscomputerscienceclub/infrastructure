@@ -3,10 +3,10 @@ reqs:
 	ansible-galaxy install -r requirements.yml
 
 decrypt:
-	ansible-vault decrypt --vault-password-file .vault-password ./**/*key* ./**/*tfstate*
+	ansible-vault decrypt --vault-password-file .vault-password ./**/*.key.* ./**/*.tfstate*
 
 encrypt:
-	ansible-vault encrypt --vault-password-file .vault-password ./**/*key* ./**/*tfstate*
+	ansible-vault encrypt --vault-password-file .vault-password ./**/*.key.* ./**/*.tfstate*
 gitinit:
 	@chmod +x ./git-init.sh
 	@./git-init.sh

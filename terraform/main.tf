@@ -16,17 +16,6 @@ data "gandi_domain" "bhscs_club" {
 }
 
 
-#tmp until ddns setup 
-resource "gandi_livedns_record" "kaiz" {
-  zone = "bhscs.club"
-  name = "kaiz-home.servers"
-  type = "A"
-  values = [
-    "174.100.126.2",
-  ]
-  ttl = 400
-}
-
 # GitHub Pages website
 resource "gandi_livedns_record" "www_bhscs" {
   zone   = "bhscs.club"
