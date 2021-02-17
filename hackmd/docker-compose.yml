@@ -70,16 +70,17 @@ services:
       - CMD_DB_URL=postgres://hedgedoc:password@database:5432/hedgedoc
     volumes:
       - uploads:/hedgedoc/public/uploads
-    ports:
-      # Ports that are published to the outside.
-      # The latter port is the port inside the container. It should always stay on 3000
-      # If you only specify a port it'll published on all interfaces. If you want to use a
-      # local reverse proxy, you may want to listen on 127.0.0.1.
-      # Example:
-      # - "127.0.0.1:3000:3000"
-      - "3000:3000"
+    # ports:
+    #   # Ports that are published to the outside.
+    #   # The latter port is the port inside the container. It should always stay on 3000
+    #   # If you only specify a port it'll published on all interfaces. If you want to use a
+    #   # local reverse proxy, you may want to listen on 127.0.0.1.
+    #   # Example:
+    #   # - "127.0.0.1:3000:3000"
+    #   - "3000:3000"
     networks:
       backend:
+      nginxnet:
     restart: always
     depends_on:
       - database
@@ -88,6 +89,8 @@ services:
 networks:
   # Internal network for communication with PostgreSQL/MySQL
   backend:
+  nginxnet:
+    external: true
 
 # Define named volumes so data stays in place
 volumes:
