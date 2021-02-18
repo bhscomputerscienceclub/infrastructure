@@ -74,6 +74,8 @@ services:
       - CMD_REDUIRE_FREEURL_AUTHENTICATION=true
       - CMD_ALLOW_ANONYMOUS=false
       - CMD_ALLOW_ANONYMOUS_EDITS=true
+      - CMD_PROTOCOL_USE_SSL=true
+      - CMD_DOMAIN="docs.bhscs.club"
 
     secrets:
       - github_clientID
