@@ -68,6 +68,16 @@ services:
       # - sqlite:///data/sqlite.db (NOT RECOMMENDED)
       # - For details see the official sequelize docs: http://docs.sequelizejs.com/en/v3/
       - CMD_DB_URL=postgres://hedgedoc:password@database:5432/hedgedoc
+      - CMD_EMAIL=false
+      - CMD_USECDN=true
+      - CMD_ALLOW_FREEURL=true
+      - CMD_REDUIRE_FREEURL_AUTHENTICATION=true
+      - CMD_ALLOW_ANONYMOUS=false
+      - CMD_ALLOW_ANONYMOUS_EDITS=true
+
+    secrets:
+      - github_clientID
+      - github_clientSecret
     volumes:
       - uploads:/hedgedoc/public/uploads
     # ports:
@@ -97,3 +107,10 @@ volumes:
   # Volume for PostgreSQL/MySQL database
   database:
   uploads:
+
+secrets:
+  github_clientSecret:
+    file: ./clientSecret
+  github_clientID:
+    file: ./clientID
+
